@@ -1,0 +1,19 @@
+<network>
+  <name>demo-net</name>
+  <uuid>5618453a-d6af-42f5-b77d-eb1727371b12</uuid>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='demo-net-br0' stp='on' delay='0'/>
+  <mac address='42:ef:c9:0b:a4:f2'/>
+  <ip address='192.168.99.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.99.2' end='192.168.99.254'/>
+<host mac='52:54:00:4c:40:1c' name='demo-vm1' ip='192.168.99.10'/>
+<host mac='52:54:00:4c:40:12' name='demo-vm1' ip='192.168.99.20'/>
+<host mac='52:54:00:4c:40:13' name='demo-vm1' ip='192.168.99.30'/>
+    </dhcp>
+  </ip>
+</network>

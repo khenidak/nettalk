@@ -1,0 +1,23 @@
+#cloud-config
+hostname: demo-vm1
+manage_resolv_conf: true
+resolv_conf:
+  nameservers: ['8.8.8.8']
+users:
+  - name: khenidak
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFI1ZE4HzjY97RZKuNO+4WqUN60MftxxGwJovJXNaTR4jSOVgw/VhNhdBz567ZuYRgjlRrYI04opJ+eppEqZpzTddF5vY7kGUxgOb7F4p6FJtA1Za7qp6ci+O17euM8MvZkgfUfhkEko1Ryq4zlbDztA0HDbuS3X8qRHPduJ3mSxkxxP+CSSnKUFjUwySEkB7ZZnvjyxtsnKnZ138IELWnTRgMv1tc9MNdgloAVaB9e06vZxxl85k1YKlNsJJbWfgzQ3xqY/Dx1vBvOOgih5sGIY+AxZupw7RegNG2UyNBSxGYm9JASI7RH6pyt+wrfOo8Znf5T9DNQP/xUHduBRsh7FGeWQU8CHtyzT7OL39d1F6ZPStzR8TY+nC+XsnpdOqOKxlndIYTuTUE+119mLDtkHvVidUbkWfNdrVFZScKRIL/PLvIWgusv06CU9FbYc7OXZ/81c2IswtUYbpVfIH8Qkr7wJrDCl5+bnjnKWkfDy9AtnsbR7ZW4NYy7iVcRrhk3S00ISw2iWm1DbtA9YExGHcmpli4SZaHbSkTUuAy9EOTkF5b68TFRzX9I0q/K4pY+HcCLpgqgjOZ4FODPJGkmDiL/0pFqlUpwaXKNyc8JI4j5MYiiXVoBSgTFbVUCCSeIYTsv/LPaeWCft7H24nN1FKdJuaGSyLZ1F/SgpjuWQ== khenidak@xclusters 
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
+package_upgrade: true
+packages:
+  - apt-transport-https
+  - ca-certificates
+  - dnsutils
+  - net-tools
+  - curl
+
+runcmd:
+  - 'sudo echo 127.0.0.1 demo-vm1 >> /etc/hosts'
+  - 'sudo systemctl daemon-reload'
