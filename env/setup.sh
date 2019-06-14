@@ -82,7 +82,7 @@ start_vms
 echo "** vms started"
 
 echo "** waiting 20s"
-sleep 20
+sleep 30
 
 echo "** VMs running, ARP table"
 arp

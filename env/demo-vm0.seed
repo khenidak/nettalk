@@ -17,6 +17,7 @@ packages:
   - dnsutils
   - net-tools
   - curl
+  - socat
 
 runcmd:
   - 'sudo echo 127.0.0.1 demo-vm0 >> /etc/hosts'
