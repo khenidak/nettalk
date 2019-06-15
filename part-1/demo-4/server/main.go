@@ -19,8 +19,11 @@ func main() {
 	fmt.Printf("listening on :10020..\n")
 	for {
 		// c represent a connection. the 3 way handshake
-		// has been done by the kernel implementation of the tcp stack
+		// if there is a connection in the Accept() queue
+		// then a syn has been send by client
 		c, err := l.Accept()
+		// now 3-way is done
+
 		if err != nil {
 			fmt.Printf("error accept: %v\n", err)
 			os.Exit(1)
