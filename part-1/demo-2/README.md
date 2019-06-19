@@ -14,6 +14,12 @@ cat /proc/sys/net/ipv4/ip_forward # 1 means forwarding is enabled
 
 
 ```
+# routes
+ip route | grep demo
+# all traffic going to my internal virtual network is routed to my bridge
+# 192.168.99.0/24 dev demo-net-br0  proto kernel  scope link  src 192.168.99.1
+
+
 sudo iptables-save | grep demo # assuming you only have one *demo* bridge
 # -A FORWARD -d 192.168.99.0/24 -o demo-net-br0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPTi # con tracking (we will talk about it in part-2
 # -A FORWARD -s 192.168.99.0/24 -i demo-net-br0 -j ACCEPT # accept anything forwarded as long as the source is our vm network

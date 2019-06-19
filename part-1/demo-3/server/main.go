@@ -55,7 +55,7 @@ func main() {
 	}
 	defer conn.Close()
 
-	conn.SetReadDeadline(time.Now().Add(20 * time.Second))
+	conn.SetReadDeadline(time.Now().Add(120 * time.Second))
 	fmt.Printf("listening.. on %+v \n", addr)
 
 	buf := make([]byte, 1024)
