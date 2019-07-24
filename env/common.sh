@@ -38,7 +38,10 @@ exec_on_vm(){
 
 	idx="$(vm_to_idx "${vm}")"
 
-	echo "** executing on VM:${vm} CMD:${cmd}"
+	echo "** executing:"
+	echo "** [VM]:${vm}"
+	echo "** [++]:${cmd}"
+
 	ssh  -o LogLevel=ERROR -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${vm_ips[$idx]} "${cmd}" 
 }
 
